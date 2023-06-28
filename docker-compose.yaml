@@ -1,0 +1,15 @@
+---
+version: "3"
+
+services:
+  runner:
+    build: .
+    command: peertube-runner server
+    network_mode: host
+    user: "1000"
+    volumes:
+      - type: bind
+        source: ./config.toml
+        target: /home/node/.config/peertube-runner-nodejs/default/config.toml
+# Register:
+# docker compose exec -it --user 1000 runner peertube-runner register --url https://localhost.ru --registration-token ptrrt-e00d3a53-9601-4dc0-b98d-46c4cae837e8 --runner-name my-runner-name
